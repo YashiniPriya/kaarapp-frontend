@@ -59,8 +59,10 @@ export default function App(){
 
   async function revokeOrder(orderId) {
     try {
-      const r = await fetch(`http://localhost:8080/api/orders/${encodeURIComponent(orderId)}/revoke`, { method: 'POST' })
-      if (!r.ok) {
+        const r = await fetch(`${API_BASE}/api/orders/${encodeURIComponent(orderId)}/revoke`, {
+        method: 'POST'
+        })      
+        if (!r.ok) {
         const body = await r.json().catch(()=> ({}))
         alert(body.message || `Revoke failed ${r.status}`)
         return
