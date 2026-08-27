@@ -34,6 +34,8 @@ function riskFor(order) {
   return 'low'
 }
 
+const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+
 export default function App(){
   const [orders, setOrders] = useState([])
   const [selected, setSelected] = useState(null)
@@ -42,7 +44,7 @@ export default function App(){
 
   useEffect(()=>{
     setLoadingOrders(true)
-    fetch('http://localhost:8080/api/orders')
+    fetch(`${API_BASE}/api/orders`)
       .then(r=>{ if(!r.ok) throw new Error('no api'); return r.json() })
       .then(data=> {
         if(!Array.isArray(data) || data.length < 20) {

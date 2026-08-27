@@ -15,7 +15,8 @@ export default function OrderDetail({ order, managerMode }){
   async function fetchSummary(){
     setLoading(true); setError(null); setSummary(null)
     try{
-      const resp = await fetch('http://localhost:8080/api/summary', { method: 'POST', headers: { 'Content-Type':'application/json' }, body: JSON.stringify(order) })
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+      const resp = await fetch(`${API_BASE}/api/summary`, { method: 'POST', headers: { 'Content-Type':'application/json' }, body: JSON.stringify(order) })
       if (!resp.ok){
         if (resp.status===501){ setError('AI feature not available'); setLoading(false); return }
         const b = await safeParseJson(resp) || {}
@@ -41,7 +42,8 @@ export default function OrderDetail({ order, managerMode }){
     if (!order || !order.id) return
     setLoading(true); setError(null)
     try{
-      const r = await fetch(`http://localhost:8080/api/orders/${encodeURIComponent(order.id)}/revoke`, { method: 'POST' })
+      const API_BASE = import.meta.env.VITE_API_BASE_URL || 'http://localhost:8080'
+      const r = await fetch(`${API_BASE}/api/orders/${encodeURIComponent(order.id)}/revoke`, { method: 'POST' })
       if (!r.ok){ const b = await safeParseJson(r) || {}; setError(b.message || `Revoke failed ${r.status}`); setLoading(false); return }
       const b = await safeParseJson(r) || {}
       setSummary(b)
