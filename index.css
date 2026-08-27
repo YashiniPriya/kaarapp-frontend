@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/* Minimal placeholder - configure Tailwind in your build pipeline */
+
+/* Custom UI tweaks */
+.card-shadow { box-shadow: 0 6px 18px rgba(15,23,42,0.08); }
+.badge { font-weight: 600; padding: 0.25rem 0.5rem; border-radius: 0.375rem; }
+
+.skeleton {
+	background: linear-gradient(90deg, rgba(255,255,255,0.05) 25%, rgba(255,255,255,0.12) 37%, rgba(255,255,255,0.05) 63%);
+	background-size: 400% 100%;
+	animation: shimmer 1.4s ease infinite;
+}
+
+@keyframes shimmer {
+	0% { background-position: 100% 0 }
+	100% { background-position: -100% 0 }
+}
+
+.rounded-lg-2 { border-radius: 12px; }

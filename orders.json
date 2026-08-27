@@ -1,0 +1,5 @@
+[
+  { "id": 1001, "customer": "Acme Corp", "amount": "12,000", "status": "BLOCKED", "notes": "Credit hold" },
+  { "id": 1002, "customer": "Globex", "amount": "4,500", "status": "BLOCKED", "notes": "Missing docs" },
+  { "id": 1003, "customer": "Soylent", "amount": "2,300", "status": "REVIEW", "notes": "Manual review needed" }
+]
